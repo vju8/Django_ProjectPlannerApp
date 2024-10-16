@@ -1,0 +1,39 @@
+{% extends 'core/base.html' %} 
+
+{% block content %}
+
+    {% if user.is_authenticated %}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=check_circle" />
+    <main class="py-6 px-8">
+        <h1 class="mb-6 text-3xl">Current Projects</h1>
+
+        <a href="{% url 'project:add_project' %}" class="py-3 px-8 bg-green-600 text-white text-xl inline-block rounded-full">Add New Project</a>
+
+        <div class="mt-6 grid grid-cols-4 gap-8">
+            {% for project in projects %}
+                <a href="{% url 'project:project_details' project.id %}" class="relative">
+                    {% if 'low' in project.urgency %}
+                    <div class="py-6 px-6 bg-green-100 rounded-2xl">
+                    {% elif 'medium' in project.urgency %}
+                    <div class="py-6 px-6 bg-yellow-100 rounded-2xl">
+                    {% else %}
+                    <div class="py-6 px-6 bg-red-100 rounded-2xl">
+                    {% endif%}
+                        <h1 class="text-2xl">{{ project }}</h1>
+                        <p class="py-6 px-6 text-sm text-slate-600"> Created on - {{ project.created_on|date:"d.m.Y H:i" }}</p>
+                        {% if project.description_show %}
+                            <p class="py-6 px-6 text-m text-slate-600">{{ project.description }}</p>  
+                        {% endif %}
+                    </div> 
+                    {% if project.completed %}
+                    <div class="absolute top-2 right-2 p-2">
+                        <span class="material-symbols-outlined">check_circle</span>
+                    </div>
+                    {% endif %}
+                </a>
+            {% endfor %}
+            
+        </div>
+    </main>
+    {% endif %}
+{% endblock %}

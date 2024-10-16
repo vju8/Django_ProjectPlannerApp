@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Project Planner WebApp</title>
+    <!-- include tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- include bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">    
+    <!-- incluse Popper and JS Boorstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+  </head>
+  
+  <body class="min-h-screen flex flex-col">
+    {% include 'core/navbar.html'%}
+
+    {% if messages %}
+
+      {% for message in messages %}
+        {% if 'success' in message.tags %}
+          <div class="alert alert-success d-flex justify-content-between align-items-center auto-dismiss-message" role="alert">
+              {{ message}}
+        {% elif 'error' in message.tags %}
+          <div class="alert alert-danger d-flex justify-content-between align-items-center auto-dismiss-message" role="alert">
+            {{ message}}
+        {% else %}
+          <div class="alert alert-dark d-flex justify-content-between align-items-center auto-dismiss-message" role="alert">
+            {{ message}}
+        {% endif %}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+      {% endfor %}
+    {% endif %}
+      
+    <main class="flex-grow">
+      {% block content %}
+      {% endblock%}  
+    </main>
+
+    <footer class="py-8 px-8 bg-slate-900 text-center">
+      <p class="text-white">Copyright &copy; 2024 - vju_8</p>
+    </footer>
+  </body>
+
+  <script>
+    // Set a timeout for 10 seconds (10000 milliseconds)
+    setTimeout(() => {
+        // Select all elements with the class 'auto-dismiss-message'
+        const messages = document.querySelectorAll('.auto-dismiss-message');
+        
+        messages.forEach(message => {
+            // Fade out the message
+            message.classList.remove('show');
+            message.classList.add('fade');
+
+            // Remove the message from the DOM after fading out
+            setTimeout(() => {
+                message.remove();
+            }, 500); // Wait for the fade transition to complete before removing
+        });
+    }, 10000); // 10 seconds
+  </script>
+</html>
+
