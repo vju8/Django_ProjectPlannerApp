@@ -6,5 +6,25 @@
             <h1 class="text-3xl">Welcome to Project Planner WebApp</h1>
         </header>
     </main>
+    <body>
+        <h1 class="mt-10 px-12 text-3xl">
+            <strong>
+                Project and Task Statistics
+            </strong>
+        </h1>
+        <!-- Container to hold both charts -->
+        <div class="mt-20" style="display: flex; justify-content: center; gap: 2%;">
+            <!-- First Chart (Project Pie Chart) -->
+            <div style="flex: 0 0 30%;">
+                {{ project_chart|safe }}
+            </div>
+
+            <!-- Second Chart (Task Pie Chart) -->
+            <div style="flex: 0 0 30%;">
+                {{ task_chart|safe }}
+            </div>
+        </div>
+    </body>
+    
 {% endblock %}
 

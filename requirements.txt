@@ -2,10 +2,10 @@ asgiref==3.8.1
 dj-database-url==2.2.0
 Django==5.1.1
 gunicorn==23.0.0
-packaging==24.1
+mkl-service==2.4.0
+plotly-express==0.4.1
 psycopg-binary==3.2.3
 psycopg2-binary==2.9.10
 python-decouple==3.8
 sqlparse==0.5.1
-tzdata==2024.2
 whitenoise==6.7.0

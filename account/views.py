@@ -42,7 +42,7 @@ def login_user(request):
         if user is not None: 
             login(request, user)
             messages.success(request, "You have been logged in!")
-            return redirect('project:project_list')
+            return redirect('core:index')
         else: 
             messages.error(request, "Wrong email and password combination.")
             return render(request, 'account/login_user.html')
