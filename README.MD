@@ -12,9 +12,9 @@ MyProjectPlannerApp is a Django-based web application for project and task manag
 6. [Configuration](#configuration)
 7. [Database](#database)
 8. [Security](#security)
-9. [Deployment](#deployment)
-10. [Contributing](#contributing)
-11. [License](#license)
+
+
+
 
 ## Project Overview
 
@@ -81,7 +81,6 @@ The project consists of several Django apps:
 11. Access the application locally at http://127.0.0.1:8000 or http://localhost:8000
 
 ## Configuration
-
 The project uses environment variables for configuration. Create a `.env` file in the project root with the following variables:
 
 ## Database
