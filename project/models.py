@@ -18,6 +18,12 @@ class Project(models.Model):
         ('high', 'High'),
     ]
 
+    BUCKET_CHOICES = [
+        ('active', 'Working On'),
+        ('completed', 'Completed'),
+        ('backlog', 'Backlog'),
+    ]
+
     # id assigned automatically (set as PK)
     name = models.CharField(max_length=50)  
     description = models.TextField(blank=True, null=True)   
@@ -31,6 +37,7 @@ class Project(models.Model):
         # choices=URGENCY_CHOICES limits the choices for this field
     completed = models.BooleanField(blank=True, default=False)
     description_show = models.BooleanField(blank=True, default=False)
+    bucket = models.CharField(max_length=9, choices=URGENCY_CHOICES, default='active')
 
     # TODO: add additional 2 fields 
     # started_on = models.DateTimeField(blank=True, null=True)

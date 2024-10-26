@@ -1,5 +1,5 @@
-# Ignore SQLite database
-*.sqlite3
+# Ignore .env file
+.env
 
 # Ignore compiled Python files
 *.pyc

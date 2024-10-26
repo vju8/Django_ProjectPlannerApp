@@ -20,20 +20,17 @@ def add_project(request):
         name = request.POST['name']
         description = request.POST['description']
         urgency = request.POST['urgency']
+        bucket = request.POST['bucket']
 
         try:
             # create new project 
             project = Project.objects.create(name=name, 
-                                                description=description, 
-                                                created_by=request.user, 
-                                                urgency=urgency)
+                                             description=description, 
+                                             created_by=request.user, 
+                                             urgency=urgency,
+                                             bucket=bucket)
             # load all existing projects for user
             projects = Project.objects.filter(created_by=request.user)
-
-            # TODO: add 3 buckets based on urgency
-            # projects_low = Project.objects.filter(created_by=request.user, urgency='low')
-            # projects_medium = Project.objects.filter(created_by=request.user, urgency='medium')
-            # projects_high = Project.objects.filter(created_by=request.user, urgency='high')
 
             messages.success(request, "New Project was created successfully!")
             return render(request, 'project/project_list.html', {'projects':projects})
@@ -67,15 +64,17 @@ def edit_project(request, pk_project):
     if request.method == "POST":
         name = request.POST['name']
         description = request.POST['description']
-        urgency = request.POST['urgency']
         # Check if checkbox is checked (returns 'on' if checked, None if not)
         description_show = request.POST.get('description_show') == 'on'
+        urgency = request.POST['urgency']
+        bucket = request.POST['bucket']
 
         try:
             project.name = name 
             project.description = description
             project.urgency = urgency
             project.description_show = description_show
+            project.bucket = bucket
             project.save()
             # load all existing projects for user
             projects = Project.objects.filter(created_by=request.user)
@@ -107,8 +106,10 @@ def complete_project(request, pk_project):
         # handle complete & undo completion
         if project.completed:
             project.completed = False
+            project.bucket = 'active'
         else: 
             project.completed = True
+            project.bucket = 'completed'
         project.save()
         # load all existing projects for user
         projects = Project.objects.filter(created_by=request.user)

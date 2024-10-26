@@ -16,7 +16,7 @@ def index(request):
         # labels, values, colors
         project_labels = ['Completed', 'Uncompleted']
         project_values = [projects_completed, projects_uncompleted]
-        project_colors  = ["#008000", "#ffde21"]
+        project_colors  = ["#192841", "#8DA9C4"]
         # create figure
         project_fig = go.Figure(data=[go.Pie(labels=project_labels, 
                                     values=project_values, 
@@ -44,7 +44,7 @@ def index(request):
         # labels, values, colors
         task_labels = ['Completed', 'Uncompleted']
         task_values = [tasks_completed, tasks_uncompleted]  
-        task_colors = ["#008000", "#FF5C00"]  
+        task_colors = ["#192841", "#8DA9C4"]  
         # create figure
         task_fig = go.Figure(data=[go.Pie(labels=task_labels, 
                                         values=task_values, 
