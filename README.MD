@@ -97,3 +97,14 @@ The project uses SQLite as the default database, which is included with Django. 
   - Sessions expire after 10 minutes of inactivity
   - Sessions are invalidated when the browser is closed
   - Database-backed session storage
+
+## Screenshots
+
+![Dashboard](screenshots/main_page.png)
+*Overview of main page with simplified project and task statistics*
+
+![Dashboard](screenshots/project_list.png)
+*Dashboard: Overview of all projects in different buckets*
+
+![Dashboard](screenshots/project_details.png)
+*Dashboard: Overview of projects details with tasks, their status, and files*
